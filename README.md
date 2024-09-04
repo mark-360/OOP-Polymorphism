@@ -1,20 +1,36 @@
-Polymorphism in C++
-Overview
-Polymorphism is a core principle of Object-Oriented Programming (OOP) that allows objects to be treated as instances of their parent class while providing specific behaviors in derived classes. This concept enables a single function or method to operate differently based on the type of object that invokes it.
+# Polymorphism in C++
 
-How It Works
-In this example, we illustrate polymorphism using a base class and a derived class:
+## Introduction
 
-Base Class (companyEmployee): This class includes basic attributes such as Name, Age, ExperienceYears, and Type. It defines a virtual method TypeOfWork() to describe the type of work an employee does.
+Polymorphism is a fundamental concept in Object-Oriented Programming (OOP) that allows objects to be treated as instances of their parent class, while enabling derived classes to provide specific implementations. This allows for a single interface to be used for different underlying data types.
 
-Derived Class (Employees): Inherits from companyEmployee and overrides the TypeOfWork() method to provide a more detailed description specific to the Employees class. This demonstrates how derived classes can extend or modify the behavior defined in base classes.
+## Example Overview
 
-Key Concepts
-Virtual Functions: The TypeOfWork() method is declared as virtual in the base class, allowing derived classes to override it with their specific implementations.
+In this example, polymorphism is demonstrated using a base class `companyEmployee` and a derived class `Employees`. The base class includes a virtual function that can be overridden by derived classes to provide specific behavior.
 
-Dynamic Dispatch: By using a base class pointer (companyEmployee *) to refer to a derived class object (Employees), we can call the TypeOfWork() method through the base class pointer. Polymorphism ensures that the overridden method in the derived class is executed, demonstrating dynamic method binding.
+### Code Explanation
 
-Example Usage
-Create an instance of the Employees class.
-Use the base class pointer to call the TypeOfWork() method.
-Observe how the method in the derived class is executed, showcasing polymorphism.
+- **Base Class: `companyEmployee`**
+  - Contains attributes like `Name`, `Age`, `ExperienceYears`, and `Type`.
+  - Defines a virtual function `TypeOfWork()` to describe the type of work an employee does.
+
+- **Derived Class: `Employees`**
+  - Inherits from `companyEmployee`.
+  - Overrides the `TypeOfWork()` method to provide a specific description related to the `Employees` class.
+
+### Key Points
+
+- **Virtual Functions:** The `TypeOfWork()` method in `companyEmployee` is declared as `virtual`. This allows derived classes to override it with their own implementation.
+  
+- **Dynamic Dispatch:** By using a pointer of type `companyEmployee` to refer to an `Employees` object, we can call the `TypeOfWork()` method. The overridden method in the `Employees` class is invoked, demonstrating polymorphism in action.
+
+### Example:
+
+```cpp
+// Create an instance of Employees
+Employees e1 = Employees("Mark", 19, 5, "backend", 10);
+
+// Pointer to base class
+companyEmployee * e2 = &e1;
+
+e2->TypeOfWork(); // Calls overridden method from Employees class
